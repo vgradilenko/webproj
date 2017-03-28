@@ -28,7 +28,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-devtools')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-    compile("com.oracle:ojdbc6:11.2.0.4")
-//	compile ('javax.faces', name: 'javax.faces-api')
-//	compile ('javax.faces', name: 'javax.faces-impl')
+    compile('com.oracle:ojdbc6:11.2.0.4')
+	compile('com.sun.faces:jsf-api:2.2.14')
+	compile('com.sun.faces:jsf-impl:2.2.14')
 }
