@@ -13,6 +13,10 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    public String getHelloMessage() {
+        return "Hello World!!!";
+    }
+
     private String carName;
 
     @OneToMany
