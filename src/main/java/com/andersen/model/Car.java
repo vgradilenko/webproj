@@ -12,6 +12,16 @@ public class Car {
 
     private String carName;
 
+    private String productionCountry;
+
+    public String getProductionCountry() {
+        return productionCountry;
+    }
+
+    public void setProductionCountry(String productionCountry) {
+        this.productionCountry = productionCountry;
+    }
+
     @OneToMany
     private Set<CarModel> models;
 

@@ -16,12 +16,22 @@ public class CarController {
 
     private String carName;
 
+    private String carProductionCountry;
+
     public String getCarName() {
         return carName;
     }
 
     public void setCarName(String carName) {
         this.carName = carName;
+    }
+
+    public String getCarProductionCountry() {
+        return carProductionCountry;
+    }
+
+    public void setCarProductionCountry(String carProductionCountry) {
+        this.carProductionCountry = carProductionCountry;
     }
 
     @Autowired
@@ -42,6 +52,7 @@ public class CarController {
     public void save() {
         Car car = new Car();
         car.setCarName(carName);
+        car.setProductionCountry(carProductionCountry);
         carRepository.saveAndFlush(car);
     }
 }

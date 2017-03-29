@@ -14,12 +14,17 @@
             #{car.id}
         </h:column>
         <h:column>
-            <f:facet name="header">Car manufactured</f:facet>
-            #{car.carName}
+        <f:facet name="header">Car manufactured</f:facet>
+        #{car.carName}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Car production country</f:facet>
+            #{car.productionCountry}
         </h:column>
     </h:dataTable>
     <h:form>
         <h:inputText value="#{carController.carName}" required="true" />
+        <h:inputText value="#{carController.carProductionCountry}" required="true" />
         <h:commandButton value="Save" action="#{carController.save}" />
     </h:form>
 </h:body>
