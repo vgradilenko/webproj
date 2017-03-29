@@ -1,20 +1,23 @@
 package com.andersen.model;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
+import java.io.Serializable;
 
-@ManagedBean
-@ViewScoped
-@Controller
-public class HelloWorld {
+@ManagedBean(name = "helloWorld", eager = true)
+@SessionScoped
+@Component
+public class HelloWorld implements Serializable {
 
     public HelloWorld(){
         System.out.println("HelloWorld started");
     }
 
     public String getMessage(){
-        return "Hello World";
+        return "Hello, Vova!!!";
     }
+
+    public String hello = "Hello";
 }
