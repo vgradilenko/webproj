@@ -1,10 +1,7 @@
 package com.andersen.model;
 
-import lombok.Data;
-
 import javax.persistence.*;
 
-@Data
 @Entity
 public class CarModel {
 
@@ -17,4 +14,28 @@ public class CarModel {
     @ManyToOne
     @JoinColumn(name = "manufacture_id", referencedColumnName = "id")
     private Car manufacturerName;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    public Car getManufacturerName() {
+        return manufacturerName;
+    }
+
+    public void setManufacturerName(Car manufacturerName) {
+        this.manufacturerName = manufacturerName;
+    }
 }

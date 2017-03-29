@@ -9,7 +9,6 @@ public class PageController {
 
     @GetMapping("/")
     public String indexPage(Model model) {
-        System.out.println("I WORK!!!");
         return "home.xhtml";
     }
 }
