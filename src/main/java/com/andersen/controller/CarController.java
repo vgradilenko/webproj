@@ -40,12 +40,12 @@ public class CarController {
     }
 
 
-    public List<Car> getAll (){
+    public List<Car> getAll() {
         return carRepository.findAllByOrderByIdAsc();
     }
 
     @GetMapping(value = "/{id}")
-    public Car getCarById (@PathVariable long id){
+    public Car getCarById(@PathVariable long id) {
         return carRepository.findOne(id);
     }
 
