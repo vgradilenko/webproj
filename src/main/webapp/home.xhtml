@@ -23,8 +23,12 @@
         </h:column>
     </h:dataTable>
     <h:form>
+        <h:outputLabel>Car name:</h:outputLabel>
         <h:inputText value="#{carController.carName}" required="true" />
+        <p>
+        <h:outputLabel>Production country:</h:outputLabel>
         <h:inputText value="#{carController.carProductionCountry}" required="true" />
+        </p>
         <h:commandButton value="Save" action="#{carController.save}" />
     </h:form>
 </h:body>
