@@ -4,8 +4,6 @@ import com.andersen.model.Car;
 import com.andersen.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -39,14 +37,8 @@ public class CarController {
         this.carRepository = carRepository;
     }
 
-
     public List<Car> getAll() {
         return carRepository.findAllByOrderByIdAsc();
-    }
-
-    @GetMapping(value = "/{id}")
-    public Car getCarById(@PathVariable long id) {
-        return carRepository.findOne(id);
     }
 
     public void save() {
