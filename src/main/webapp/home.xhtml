@@ -1,35 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<html xmlns = "http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
+
 <head>
     <title>WEB App</title>
 </head>
 
 <h:body>
-    <h:dataTable value="#{carController.all}" var="car">
-        <h:column>
-            <f:facet name="header">ID</f:facet>
-            #{car.id}
-        </h:column>
-        <h:column>
-        <f:facet name="header">Car manufactured</f:facet>
-        #{car.carName}
-        </h:column>
-        <h:column>
-            <f:facet name="header">Car production country</f:facet>
-            #{car.productionCountry}
-        </h:column>
-    </h:dataTable>
+    <p:dataTable id="event" var="car" value="#{carController.all}"
+                 selectionMode="single" selection="#{CarController.targetCar}"  rowKey="#{car.id}">
+
+        <p:ajax event="rowUnselect" listener="#{carController.onRowUnselect}" />
+
+        <p:column headerText="Id">
+            <h:outputText value="#{car.id}" />
+        </p:column>
+
+        <p:column headerText="Brand">
+            <h:outputText value="#{car.carName}" />
+        </p:column>
+
+        <p:column headerText="Country">
+            <h:outputText value="#{car.productionCountry}" />
+        </p:column>
+
+    </p:dataTable>
+
     <h:form>
         <h:outputLabel>Car name:</h:outputLabel>
-        <h:inputText value="#{carController.carName}" required="true" />
+        <h:inputText value="#{carController.carName}" required="true"/>
         <p>
-        <h:outputLabel>Production country:</h:outputLabel>
-        <h:inputText value="#{carController.carProductionCountry}" required="true" />
+            <h:outputLabel>Production country:</h:outputLabel>
+            <h:inputText value="#{carController.carProductionCountry}" required="true"/>
         </p>
-        <h:commandButton value="Save" action="#{carController.save}" />
+        <h:commandButton value="Save" action="#{carController.save}"/>
     </h:form>
-</h:body>
+
+    <!--!!!!-->
+
+    <h2>Info about: </h2>
+
+
+        </h:body>
 </html>
+
+
