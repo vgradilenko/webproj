@@ -2,12 +2,14 @@ package com.andersen.controller;
 
 import com.andersen.model.Car;
 import com.andersen.repository.CarRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 @Controller
+@Data
 public class CarController {
 
     private final CarRepository carRepository;
@@ -15,22 +17,6 @@ public class CarController {
     private String carName;
 
     private String carProductionCountry;
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-
-    public String getCarProductionCountry() {
-        return carProductionCountry;
-    }
-
-    public void setCarProductionCountry(String carProductionCountry) {
-        this.carProductionCountry = carProductionCountry;
-    }
 
     @Autowired
     public CarController(CarRepository carRepository) {
