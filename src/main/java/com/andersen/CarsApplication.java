@@ -12,7 +12,7 @@ import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
 
 @SpringBootApplication
-public class CarsApplication implements ServletContextAware{
+public class CarsApplication implements ServletContextAware {
 
     public static void main(String[] args) {
         SpringApplication.run(CarsApplication.class, args);
