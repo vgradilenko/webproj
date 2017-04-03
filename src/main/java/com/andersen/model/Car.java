@@ -1,7 +1,8 @@
 package com.andersen.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Car {
@@ -22,8 +23,8 @@ public class Car {
         this.productionCountry = productionCountry;
     }
 
-    @OneToMany
-    private Set<CarModel> models;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<CarModel> models;
 
     public Long getId() {
         return id;
@@ -41,11 +42,27 @@ public class Car {
         this.carName = carName;
     }
 
-    public Set<CarModel> getModels() {
+    public List<CarModel> getModels() {
         return models;
     }
 
-    public void setModels(Set<CarModel> models) {
+    public void setModels(List<CarModel> models) {
         this.models = models;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(id, car.id) &&
+                Objects.equals(carName, car.carName) &&
+                Objects.equals(productionCountry, car.productionCountry) &&
+                Objects.equals(models, car.models);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, carName, productionCountry, models);
     }
 }

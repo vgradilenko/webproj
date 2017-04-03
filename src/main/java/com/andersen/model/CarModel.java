@@ -1,6 +1,7 @@
 package com.andersen.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class CarModel {
@@ -11,7 +12,7 @@ public class CarModel {
 
     private String modelName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "manufacture_id", referencedColumnName = "id")
     private Car manufacturerName;
 
@@ -37,5 +38,20 @@ public class CarModel {
 
     public void setManufacturerName(Car manufacturerName) {
         this.manufacturerName = manufacturerName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarModel carModel = (CarModel) o;
+        return Objects.equals(id, carModel.id) &&
+                Objects.equals(modelName, carModel.modelName) &&
+                Objects.equals(manufacturerName, carModel.manufacturerName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, modelName, manufacturerName);
     }
 }

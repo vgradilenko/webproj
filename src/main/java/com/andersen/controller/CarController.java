@@ -1,20 +1,21 @@
 package com.andersen.controller;
 
 import com.andersen.model.Car;
+import com.andersen.model.CarModel;
+import com.andersen.repository.CarModelRepository;
 import com.andersen.repository.CarRepository;
 import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class CarController {
 
     private final CarRepository carRepository;
+    private final CarModelRepository modelRepository;
+
     private String carName;
     private String carProductionCountry;
     private Car targetCar;
@@ -44,8 +45,10 @@ public class CarController {
     }
 
     @Autowired
-    public CarController(CarRepository carRepository) {
+    public CarController(CarRepository carRepository, CarModelRepository modelRepository) {
         this.carRepository = carRepository;
+        this.modelRepository = modelRepository;
+        this.targetCar = carRepository.findOne((long) 1);
     }
 
     public List<Car> getAll() {
@@ -53,18 +56,12 @@ public class CarController {
     }
 
     public void onRowSelect(SelectEvent event) {
-        long brandId = ((Car) event.getObject()).getId();
-        FacesMessage msg = new FacesMessage("Car Selected", ((Car) event.getObject()).getCarName());
-        FacesContext.getCurrentInstance().getCurrentPhaseId();
+        targetCar = (Car) event.getObject();
+        targetCar.setModels(modelRepository.findAllByManufacturerName_Id(targetCar.getId()));
     }
 
-    public String onRowUnselect() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        Map<String, String> map = context.getExternalContext().getRequestParameterMap();
-
-        String testValue = map.get("carId");
-        System.out.print(testValue);
-        return testValue;
+    public List<CarModel> getModels() {
+        return modelRepository.findAll();
     }
 
     public void save() {

@@ -4,26 +4,26 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-<head>
+<h:head>
     <title>WEB App</title>
-</head>
+</h:head>
 
 <h:body>
     <p:dataTable id="event" var="car" value="#{carController.all}"
-                 selectionMode="single" selection="#{CarController.targetCar}"  rowKey="#{car.id}">
+                 selectionMode="single" selection="#{carController.targetCar}" rowKey="#{car.id}">
 
-        <p:ajax event="rowUnselect" listener="#{carController.onRowUnselect}" />
+        <p:ajax update="info" event="rowSelect" listener="#{carController.onRowSelect}"/>
 
         <p:column headerText="Id">
-            <h:outputText value="#{car.id}" />
+            <h:outputText value="#{car.id}"/>
         </p:column>
 
         <p:column headerText="Brand">
-            <h:outputText value="#{car.carName}" />
+            <h:outputText value="#{car.carName}"/>
         </p:column>
 
         <p:column headerText="Country">
-            <h:outputText value="#{car.productionCountry}" />
+            <h:outputText value="#{car.productionCountry}"/>
         </p:column>
 
     </p:dataTable>
@@ -38,12 +38,20 @@
         <h:commandButton value="Save" action="#{carController.save}"/>
     </h:form>
 
-    <!--!!!!-->
-
-    <h2>Info about: </h2>
+    <h2>Info about models: </h2>
 
 
-        </h:body>
+    <p:dataTable id="info" var="info" value="#{carController.targetCar.models}">
+        <p:column headerText="ID">
+            <h:outputText value="#{info.id}"/>
+        </p:column>
+
+        <p:column headerText="MODEL NAME">
+            <h:outputText value="#{info.modelName}"/>
+        </p:column>
+    </p:dataTable>
+
+</h:body>
 </html>
 
 
