@@ -1,0 +1,5 @@
+SELECT D.NAME AS department_name, 
+    COUNT (E.ID) AS Amount_of_staff    
+FROM DEPARTMENTS D
+JOIN EMPLOYEES E ON D.ID = E.DEPID
+GROUP BY D.NAME;
