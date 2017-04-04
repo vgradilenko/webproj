@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -10,46 +9,65 @@
 
 <h:body>
     <p:dataTable id="event" var="car" value="#{carController.all}"
-                 selectionMode="single" selection="#{carController.targetCar}" rowKey="#{car.id}">
+                 selectionMode="single" rowKey="#{car.id}">
 
         <p:ajax update="info" event="rowSelect" listener="#{carController.onRowSelect}"/>
 
-        <p:column headerText="Id">
+        <p:column headerText="ID">
             <h:outputText value="#{car.id}"/>
         </p:column>
-
-        <p:column headerText="Brand">
+        <p:column headerText="BRAND">
             <h:outputText value="#{car.carName}"/>
         </p:column>
-
-        <p:column headerText="Country">
+        <p:column headerText="COUNTRY">
             <h:outputText value="#{car.productionCountry}"/>
         </p:column>
-
     </p:dataTable>
 
     <h:form>
-        <h:outputLabel>Car name:</h:outputLabel>
-        <h:inputText value="#{carController.carName}" required="true"/>
-        <p>
-            <h:outputLabel>Production country:</h:outputLabel>
-            <h:inputText value="#{carController.carProductionCountry}" required="true"/>
-        </p>
-        <h:commandButton value="Save" action="#{carController.save}"/>
+        <p:panel>
+            <h:outputLabel>Car name:</h:outputLabel>
+            <h:inputText value="#{carController.carName}" required="true"/>
+            <p>
+                <h:outputLabel>Production country:</h:outputLabel>
+                <h:inputText value="#{carController.carProductionCountry}" required="true"/>
+            </p>
+            <h:commandButton value="Save" action="#{carController.save}"/>
+        </p:panel>
     </h:form>
-
     <h2>Info about models: </h2>
 
 
-    <p:dataTable id="info" var="info" value="#{carController.targetCar.models}">
+    <p:dataTable id="info" var="carModel" value="#{carController.targetCar.models}">
         <p:column headerText="ID">
-            <h:outputText value="#{info.id}"/>
+            <h:outputText value="#{carModel.id}"/>
         </p:column>
-
         <p:column headerText="MODEL NAME">
-            <h:outputText value="#{info.modelName}"/>
+            <h:outputText value="#{carModel.modelName}"/>
+        </p:column>
+        <p:column headerText="MANUFACTURED YEAR">
+            <h:outputText value="#{carModel.manufacturedYear}"/>
+        </p:column>
+        <p:column headerText="MODEL PRICE">
+            <h:outputText value="#{carModel.price}"/>
         </p:column>
     </p:dataTable>
+
+    <h:form>
+        <p:panel>
+            <h:outputLabel>Model name:</h:outputLabel>
+            <h:inputText value="#{carController.modelName}" required="true"/>
+            <p>
+                <h:outputLabel>Manufactured year:</h:outputLabel>
+                <h:inputText value="#{carController.modelYear}" required="true"/>
+            </p>
+            <p>
+                <h:outputLabel>Price:</h:outputLabel>
+                <h:inputText value="#{carController.modelPrice}" required="true"/>
+            </p>
+            <h:commandButton value="Save" action="#{carController.saveModel}"/>
+        </p:panel>
+    </h:form>
 
 </h:body>
 </html>
