@@ -4,6 +4,7 @@ import com.andersen.model.Car;
 import com.andersen.model.CarModel;
 import com.andersen.repository.CarModelRepository;
 import com.andersen.repository.CarRepository;
+import lombok.Data;
 import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import java.util.List;
 
 @Controller
+@Data
 public class CarController {
 
     private final CarRepository carRepository;
@@ -19,36 +21,14 @@ public class CarController {
     private String carName;
     private String carProductionCountry;
     private Car targetCar;
-
-    public Car getTargetCar() {
-        return targetCar;
-    }
-
-    public void setTargetCar(Car targetCar) {
-        this.targetCar = targetCar;
-    }
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
-
-    public String getCarProductionCountry() {
-        return carProductionCountry;
-    }
-
-    public void setCarProductionCountry(String carProductionCountry) {
-        this.carProductionCountry = carProductionCountry;
-    }
+    private String modelName;
+    private Integer modelYear;
+    private Long modelPrice;
 
     @Autowired
     public CarController(CarRepository carRepository, CarModelRepository modelRepository) {
         this.carRepository = carRepository;
         this.modelRepository = modelRepository;
-        this.targetCar = carRepository.findOne((long) 1);
     }
 
     public List<Car> getAll() {
@@ -56,8 +36,9 @@ public class CarController {
     }
 
     public void onRowSelect(SelectEvent event) {
-        targetCar = (Car) event.getObject();
-        targetCar.setModels(modelRepository.findAllByManufacturerName_Id(targetCar.getId()));
+        Car tempCar = (Car) event.getObject();
+        targetCar = carRepository.findOne(tempCar.getId());
+        targetCar.setModels(modelRepository.findAllByManufacturerNameId(targetCar.getId()));
     }
 
     public List<CarModel> getModels() {
@@ -69,5 +50,14 @@ public class CarController {
         car.setCarName(carName);
         car.setProductionCountry(carProductionCountry);
         carRepository.saveAndFlush(car);
+    }
+
+    public void saveModel() {
+        CarModel model = new CarModel();
+        model.setModelName(modelName);
+        model.setManufacturedYear(modelYear);
+        model.setPrice(modelPrice);
+        model.setManufacturerName(carRepository.findOne(targetCar.getId()));
+        modelRepository.saveAndFlush(model);
     }
 }
