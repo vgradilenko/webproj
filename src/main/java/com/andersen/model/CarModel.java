@@ -9,14 +9,14 @@ import javax.persistence.*;
 @Data
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "save_model",
-        procedureName = "cars_project_pkg.save_model",
-        parameters = {
-                @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramModelName", type = String.class),
-                @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramYear", type = Integer.class),
-                @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramPrice", type = Long.class),
-                @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramManufactureId", type = Long.class),
-                @StoredProcedureParameter(mode = ParameterMode.OUT, name = "outParam", type = String.class)
-        })
+                procedureName = "cars_project_pkg.save_model",
+                parameters = {
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramModelName", type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramYear", type = Integer.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramPrice", type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "paramManufactureId", type = Long.class),
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "outParam", type = String.class)
+                })
 })
 public class CarModel {
 
@@ -25,7 +25,7 @@ public class CarModel {
             @org.hibernate.annotations.Parameter(name = "sequenceName", value = "model_sequence"),
             @org.hibernate.annotations.Parameter(name = "allocationSize", value = "1"),
     })
-    @GeneratedValue(generator = "sequence", strategy=GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String modelName;
