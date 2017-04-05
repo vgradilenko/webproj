@@ -60,4 +60,9 @@ public class CarController {
         model.setManufacturerName(carRepository.findOne(targetCar.getId()));
         modelRepository.saveAndFlush(model);
     }
+
+    public void deleteCar() {
+        modelRepository.delete(targetCar.getModels());
+        carRepository.delete(targetCar.getId());
+    }
 }

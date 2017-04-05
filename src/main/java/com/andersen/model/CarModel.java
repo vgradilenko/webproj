@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class CarModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String modelName;
@@ -18,7 +18,7 @@ public class CarModel {
 
     private Long price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "manufacture_id", referencedColumnName = "id")
     private Car manufacturerName;
 }
