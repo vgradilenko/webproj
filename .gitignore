@@ -26,3 +26,5 @@ nbdist/
 /.idea/
 /.gradle/
 /lib/
+/src/main/resources/application.properties
+/.gitignore
