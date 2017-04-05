@@ -22,11 +22,6 @@
         <p:column headerText="COUNTRY">
             <h:outputText value="#{car.productionCountry}"/>
         </p:column>
-        <p:column >
-            <p:commandButton value="delete">
-                <p:ajax update="event"  listener="#{carController.deleteCar}"/>
-            </p:commandButton>
-        </p:column>
     </p:dataTable>
 
     <h:form>

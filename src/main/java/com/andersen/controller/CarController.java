@@ -61,8 +61,4 @@ public class CarController {
         modelRepository.saveAndFlush(model);
     }
 
-    public void deleteCar() {
-        modelRepository.delete(targetCar.getModels());
-        carRepository.delete(targetCar.getId());
-    }
 }
