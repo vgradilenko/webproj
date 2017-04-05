@@ -8,6 +8,7 @@
 </h:head>
 
 <h:body>
+
     <p:dataTable id="event" var="car" value="#{carController.all}"
                  selectionMode="single" rowKey="#{car.id}">
 
@@ -65,8 +66,9 @@
                 <h:outputLabel>Price:</h:outputLabel>
                 <h:inputText value="#{carController.modelPrice}" required="true"/>
             </p>
-            <h:commandButton value="Save" action="#{carController.saveModel}"/>
+            <h:commandButton value="Save" action="#{carController.saveModelByPlSql}"/>
         </p:panel>
+        <p:messages showDetail="true" autoUpdate="true" closable="true"/>
     </h:form>
 
 </h:body>

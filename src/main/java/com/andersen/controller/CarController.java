@@ -9,6 +9,8 @@ import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import java.util.List;
 
 @Controller
@@ -59,5 +61,11 @@ public class CarController {
         model.setPrice(modelPrice);
         model.setManufacturerName(carRepository.findOne(targetCar.getId()));
         modelRepository.saveAndFlush(model);
+    }
+
+    public void saveModelByPlSql(){
+//        System.out.println(modelRepository.saveModel(modelName, modelYear, modelPrice, targetCar.getId()));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+               "" ,modelRepository.saveModel(modelName, modelYear, modelPrice, targetCar.getId())));
     }
 }
