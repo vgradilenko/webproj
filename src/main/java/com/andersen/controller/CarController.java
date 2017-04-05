@@ -63,9 +63,10 @@ public class CarController {
         modelRepository.saveAndFlush(model);
     }
 
-    public void saveModelByPlSql(){
-//        System.out.println(modelRepository.saveModel(modelName, modelYear, modelPrice, targetCar.getId()));
+    public void saveModelByPlSql() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+
                 "" ,modelRepository.saveModel(modelName, modelYear, modelPrice, targetCar.getId())));
+
     }
 }
