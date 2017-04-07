@@ -26,6 +26,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-tomcat')
     compile('org.springframework.boot:spring-boot-devtools')
+  //  compile("org.springframework.boot:spring-boot-starter-security")
     compile('org.projectlombok:lombok')
     compile('com.oracle:ojdbc6:11.2.0.3')
     compile('com.sun.faces:jsf-api:2.2.14')

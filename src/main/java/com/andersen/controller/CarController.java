@@ -75,6 +75,6 @@ public class CarController {
     public void deleteModelByPlSql(CarModel carModel){
         FacesContext.getCurrentInstance()
                 .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                "INFO", modelRepository.deleteModel(carModel.getId())));
+                "INFO: ", modelRepository.deleteModel(carModel.getId())));
     }
 }
