@@ -1,5 +1,6 @@
 package com.andersen.controller;
 
+import com.andersen.domain.Role;
 import com.andersen.model.Car;
 import com.andersen.model.CarModel;
 import com.andersen.repository.CarModelRepository;
@@ -7,6 +8,7 @@ import com.andersen.repository.CarRepository;
 import lombok.Data;
 import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 
 import javax.faces.application.FacesMessage;
