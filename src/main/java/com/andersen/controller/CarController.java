@@ -1,28 +1,29 @@
 package com.andersen.controller;
 
-import com.andersen.domain.Role;
 import com.andersen.model.Car;
 import com.andersen.model.CarModel;
 import com.andersen.repository.CarModelRepository;
 import com.andersen.repository.CarRepository;
 import lombok.Data;
+import lombok.extern.log4j.Log4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.primefaces.event.SelectEvent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.faces.event.PhaseId;
 import java.util.List;
 
+@Log4j
 @Controller
 @Data
 public class CarController {
 
     private final CarRepository carRepository;
     private final CarModelRepository modelRepository;
+    private static Logger logger = LogManager.getRootLogger();
 
     private String carName;
     private String carProductionCountry;
@@ -44,8 +45,10 @@ public class CarController {
 
     public void onRowSelect(SelectEvent event) {
         Car tempCar = (Car) event.getObject();
+        logger.debug(tempCar);
         targetCar = carRepository.findOne(tempCar.getId());
         targetCar.setModels(modelRepository.findAllByManufacturerNameId(targetCar.getId()));
+        logger.debug(targetCar);
     }
 
     public List<CarModel> getModels() {
@@ -56,6 +59,7 @@ public class CarController {
         Car car = new Car();
         car.setCarName(carName);
         car.setProductionCountry(carProductionCountry);
+        logger.debug(car);
         carRepository.saveAndFlush(car);
     }
 
@@ -75,6 +79,7 @@ public class CarController {
     }
 
     public void deleteModelByPlSql(CarModel carModel){
+        logger.debug(carModel);
         FacesContext.getCurrentInstance()
                 .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "INFO: ", modelRepository.deleteModel(carModel.getId())));

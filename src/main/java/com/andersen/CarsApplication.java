@@ -1,6 +1,9 @@
 package com.andersen;
 
 import com.sun.faces.config.ConfigureListener;
+import lombok.extern.log4j.Log4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,12 +18,15 @@ import org.springframework.web.context.ServletContextAware;
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
 
+@Log4j
 @SpringBootApplication
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class CarsApplication implements ServletContextAware {
+    private static Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) {
         SpringApplication.run(CarsApplication.class, args);
+        logger.debug("STAAAAAAAAAAAAAAAAAAAAAAAAAAAARTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
     }
 
     @Override
