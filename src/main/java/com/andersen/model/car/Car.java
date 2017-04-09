@@ -1,4 +1,4 @@
-package com.andersen.model;
+package com.andersen.model.car;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

@@ -1,22 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:P="http://java.sun.com/jsf/html">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <title>Login</title>
 </h:head>
 
 <h:body>
-    <h1>Hello</h1>
+    <h1>This custom login page</h1>
+    <h:form>
+        <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+            <h:outputText value="Login: "/>
+            <p:inputText id="username" value="#{UserController.login}" />
 
-        <p:dataTable>
-            <p:inputText id="name" value="dd" />
-            <p:inputText id="password" value="dd" />
-            <p:commandButton value="Submit" update="display" />
-        </p:dataTable>
+            <h:outputText value="Password: "/>
+            <p:password id="password" value="#{UserController.password}"/>
+        </h:panelGrid>
+        <p:commandButton value="login" action="#{userController.user(login)}"/>
+    </h:form>
 
 </h:body>
-
 
 </html>

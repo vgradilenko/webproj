@@ -1,5 +1,6 @@
-package com.andersen.model;
+package com.andersen.model.car;
 
+import com.andersen.model.car.Car;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 

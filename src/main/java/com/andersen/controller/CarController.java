@@ -1,7 +1,7 @@
 package com.andersen.controller;
 
-import com.andersen.model.Car;
-import com.andersen.model.CarModel;
+import com.andersen.model.car.Car;
+import com.andersen.model.car.CarModel;
 import com.andersen.repository.CarModelRepository;
 import com.andersen.repository.CarRepository;
 import lombok.Data;

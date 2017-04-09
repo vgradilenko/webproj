@@ -1,6 +1,6 @@
 package com.andersen.controller;
 
-import com.andersen.model.CarModel;
+import com.andersen.model.car.CarModel;
 import com.andersen.repository.CarModelRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.andersen.repository;
 
-import com.andersen.model.Car;
+import com.andersen.model.car.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
