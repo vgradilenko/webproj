@@ -9,6 +9,6 @@ public class PageController {
 
     @GetMapping("/")
     public String indexPage(Model model) {
-        return "login.xhtml";
+        return "home.xhtml";
     }
 }
