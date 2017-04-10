@@ -27,7 +27,6 @@ dependencies {
         exclude module: 'org.springframework.boot:spring-boot-starter-logging'
     }
     compile('org.springframework.boot:spring-boot-starter-tomcat')
-//    compile('org.springframework.boot:spring-boot-devtools')
     compile("org.springframework.boot:spring-boot-starter-security")
     compile('org.projectlombok:lombok')
     compile('com.oracle:ojdbc6:11.2.0.3')

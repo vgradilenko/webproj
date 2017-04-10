@@ -10,17 +10,19 @@
 
 <h:body>
     <h1>This custom login page</h1>
-    <h:form>
-        <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
-            <h:outputText value="Login: "/>
-            <p:inputText id="username" value="#{UserController.login}" />
 
-            <h:outputText value="Password: "/>
-            <p:password id="password" value="#{UserController.password}"/>
-        </h:panelGrid>
-        <p:commandButton value="login" action="#{userController.user(login)}"/>
-    </h:form>
+    <form action="${pageContext.request.contextPath}/login.xhtml" method="post">
+        <h:form>
+            <h:panelGrid columns="2" id="matchGrid" cellpadding="5">
+                <h:outputText value="Login: "/>
+                <p:inputText id="username" required="true"/>
 
+                <h:outputText value="Password: "/>
+                <p:password id="password" required="true"/>
+            </h:panelGrid>
+            <p:commandButton value="login"/>
+        </h:form>
+    </form>
 </h:body>
 
 </html>
